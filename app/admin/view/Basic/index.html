@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<link rel="stylesheet" href="__CSS__/bootstrap.min.css">
+	<link rel="stylesheet" href="__CSS__/adminIndex.css">
+	<link rel="stylesheet" href="__CSS__/font-awesome.min.css">
+	<meta charset="UTF-8">
+	<title>后台管理页面</title>
+</head>
+<body>
+<header>
+	<section>
+		{include file="Index/nav"}
+	</section>
+</header>
+<main class="row">
+	<section class="col-md-2">
+		{include file="Index/sidebar"}
+	</section>
+	<section class="col-md-10 mainbody">
+		<div class="wrap">
+
+			<ul class="breadcrumb">
+				<li><a href="/admin/Basic/index"><i class="fa fa-dashboard"></i> 基本管理</a></li>
+			</ul>
+			<!-- 按钮 -->
+			<button id="button-cache" class="btn btn-primary"><i class="fa fa-refresh"></i> 更新缓存</button>
+			<button id="button-backup" class="btn btn-success"><i class="fa fa-refresh"></i> 备份数据库</button>
+			<!-- <button  id="button-listorder" type="button" class="btn btn-default dropdown-toggle" ><span class="glyphicon glyphicon-plus" aria-hidden="true"></span>更新排序 </button> -->
+			<hr />
+			<div class="row">
+			    <div class="col-lg-12">
+
+			        <form class="form-horizontal" id="mooncms-form">
+			            <div class="form-group">
+			                <label for="title" class="col-sm-2 control-label">网站名:</label>
+			                <div class="col-sm-8">
+			                    <input type="text" name="title" class="form-control" id="title" placeholder="请填写网站名" value="{$basicWebConfig.title}">
+			                </div>
+			            </div>
+
+			            <div class="form-group">
+			                <label for="keywords" class="col-sm-2 control-label">关键字:</label>
+			                <div class="col-sm-8">
+			                    <input type="text" class="form-control" name="keywords" id="keywords" placeholder="请填写关键字" value="{$basicWebConfig.keywords}">
+			                </div>
+			            </div>
+
+			            <div class="form-group">
+			                <label for="description" class="col-sm-2 control-label">描述:</label>
+			                <div class="col-sm-8">
+			                    <input type="text" class="form-control" name="description" id="description" placeholder="请填写描述" value="{$basicWebConfig.description}">
+			                </div>
+			            </div>
+
+			            <div class="form-group">
+			                <div class="col-sm-offset-2 col-sm-10">
+			                    <button type="button" class="btn btn-default" id="mooncms-button-submit">提交</button>
+			                </div>
+			            </div>
+			        </form>
+
+
+			    </div>
+
+			</div>
+			<!-- /.row -->
+			
+
+		</div>
+	</section>
+</main>
+
+
+<script type="text/javascript" src="__JS__/jquery-3.2.1.min.js"></script>
+<script type="text/javascript" src="__JS__/bootstrap.min.js"></script>
+<script type="text/javascript" src="__JS__/dialog/layer.js"></script>
+<script type="text/javascript" src="__JS__/dialog.js"></script>
+<script type="text/javascript" src="__JS__/admin/common.js"></script>
+
+<script type="text/javascript">
+	var SCOPE = {
+		'save_url': '/admin/Basic/save',
+		'jump_url': '/admin/Basic/index',
+	}
+
+	$('#button-cache').click(function(event) {
+		var url = '/index/Index/buildHtml';
+		$.post(url, '', function(result){
+			result.status==1 ? dialog.success(result.message, SCOPE.jump_url) : dialog.error(result.message);
+		},'JSON');
+	});
+	$('#button-backup').click(function(event) {
+		var url = '/admin/Cron/dumpmysql';
+		$.post(url, '', function(result){
+			result.status==1 ? dialog.success(result.message, SCOPE.jump_url) : dialog.error(result.message);
+		},'JSON');
+	});
+</script>
+
+</body>
+</html>

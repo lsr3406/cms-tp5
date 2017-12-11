@@ -1,0 +1,23 @@
+<div class="imageNews row">
+	<div class="col-sm-9 col-xs-12">
+		<div class="bigImages row">
+			<div class="col-12 bigImage">
+				<a target="_blank" href="/index/Detail/index/id/{$bigImageNews.news_id}" class="thumbnail">
+					<img class="img-responsive center-block" src="{$bigImageNews.thumb}" alt="{$bigImageNews.title}">
+				</a>
+			</div>
+		</div>
+	</div>
+	<div class="col-sm-3 col-xs-12">
+		<div class="row smallImages">
+			{foreach name="$smallImageNews" item="news" limit=3}
+			<div class="col-sm-12 col-xs-4 smallImage">
+				<a target="_blank" href="/index/Detail/index/id/{$news.news_id}" class="thumbnail">
+					<img class="img-responsive center-block" src="{$news.thumb}" alt="{$news.title}">
+				</a>
+			</div>
+			{/foreach}
+		</div>
+	</div>
+
+</div>

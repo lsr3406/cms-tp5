@@ -1,0 +1,97 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<link rel="stylesheet" href="__CSS__/bootstrap.min.css">
+	<link rel="stylesheet" href="__CSS__/adminIndex.css">
+	<link rel="stylesheet" href="__CSS__/font-awesome.min.css">
+	<meta charset="UTF-8">
+	<title>后台管理页面</title>
+</head>
+<body>
+<header>
+	<section>
+		{include file="Index/nav"}
+	</section>
+</header>
+<main class="row">
+	<section class="col-md-2">
+		{include file="Index/sidebar"}
+	</section>
+	<section class="col-md-10 mainbody">
+		<div class="wrap">
+
+			<!-- 面包屑导航 -->
+			<ul class="breadcrumb">
+				<li><a href="/admin/Admin/index"><i class="fa fa-dashboard"></i> 用户管理</a> <span class="divider"></span></li>
+			</ul>
+	
+			<!-- 按钮 -->
+			<button id="button-add" class="btn btn-primary"><i class="fa fa-add"></i>添加</button>
+
+			<!-- 表格 -->
+			<div class="row">
+			    <div class="col-md-12">
+			        <h3></h3>
+			        <div class="table-responsive">
+			            <form id="mooncms-listorder">
+			            <table class="table table-striped table-hover table-condensed mooncms-table">
+			                <thead>
+			                <tr>
+			                    <th>id</th>
+			                    <th>用户名</th>
+			                    <th>上次登录ip</th>
+			                    <th>上次登录时间</th>
+			                    <th>真实姓名</th>
+			                    <th>邮箱</th>
+			                    <th>状态</th>
+			                    <th>操作</th>
+			                </tr>
+			                </thead>
+			                <tbody>
+			                	{volist name="$adminList" id="admin"}
+			                    <tr>
+			                        <td>{$admin.admin_id}</td>
+			                        <td>{$admin.username}</td>
+			                        <td>{$admin.lastloginip}</td>
+			                        <td>{$admin.lastlogintime}</td>
+			                        <td>{$admin.realname}</td>
+			                        <td>{$admin.email}</td>
+			                        <td><a href="javascript:void(0)" attr-id="{$admin.admin_id}" attr-status="{if condition="$admin.status=='开启'"}关闭{else/}开启{/if}" id="mooncms-on-off" >{$admin.status}</a></td>
+			                        <td>
+			                        	<a href="javascript:void(0)" attr-id="{$admin.admin_id}" attr-status="已删除" id="mooncms-delete"  attr-a="menu" attr-message="删除">
+			                        		<i class="fa fa-trash"></i>
+			                        	</a>
+			                        </td>
+			                    </tr>
+			                	{/volist}
+			                </tbody>
+			            </table>
+			            </form>
+						<div>{$adminList->render()}</div>
+			        </div>
+			    </div>
+			</div>
+			<!-- /.row -->
+		</div>
+	</section>
+</main>
+
+
+<script type="text/javascript" src="__JS__/jquery-3.2.1.min.js"></script>
+<script type="text/javascript" src="__JS__/bootstrap.min.js"></script>
+<script type="text/javascript" src="__JS__/dialog/layer.js"></script>
+<script type="text/javascript" src="__JS__/dialog.js"></script>
+<script>
+    var SCOPE = {
+        'index_url' : '/admin/Admin/index',
+        'add_url' : '/admin/Admin/add',
+        'set_status_url' : '/admin/Admin/setStatus',
+    }
+
+
+</script>
+<script type="text/javascript" src="__JS__/admin/common.js"></script>
+<script type="text/javascript" src="__JS__/admin/menu.js"></script>
+</body>
+</html>

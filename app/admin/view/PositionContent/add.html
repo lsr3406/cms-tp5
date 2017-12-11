@@ -1,0 +1,125 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<link rel="stylesheet" href="__CSS__/bootstrap.min.css">
+	<link rel="stylesheet" href="__CSS__/uploadify.css">
+	<link rel="stylesheet" href="__CSS__/adminIndex.css">
+	<link rel="stylesheet" href="__CSS__/font-awesome.min.css">
+	<meta charset="UTF-8">
+	<title>后台管理页面</title>
+</head>
+<body>
+<header>
+	<section>
+		{include file="Index/nav"}
+	</section>
+</header>
+<main class="row">
+	<section class="col-md-2">
+		{include file="Index/sidebar"}
+	</section>
+	<section class="col-md-10 mainbody">
+		<div class="wrap">
+
+			<ul class="breadcrumb">
+				<li><a href="/admin/PositionContent/index"><i class="fa fa-dashboard"></i> 推荐位内容管理</a> <span class="divider"></span></li>
+				<li class="active"><i class="fa fa-edit"></i> 添加</li>
+			</ul>
+			<div class="row">
+			    <div class="col-lg-12">
+
+			        <form class="form-horizontal" id="mooncms-form">
+			            <div class="form-group">
+			                <label for="news_id" class="col-sm-2 control-label">文章 id:</label>
+			                <div class="col-sm-8">
+			                    <input type="text" name="news_id" class="form-control" id="news_id" placeholder="请填写文章 id">
+			                </div>
+			            </div>
+						<div class="form-group">
+						    <label for="url" class="col-sm-2 control-label">url:</label>
+						    <div class="col-sm-8">
+						        <input type="text" name="url" class="form-control" id="url" placeholder="请填写url">
+						    </div>
+						</div>
+			            <div class="form-group">
+			                <label for="title" class="col-sm-2 control-label">标题:</label>
+			                <div class="col-sm-8">
+			                    <input type="text" name="title" class="form-control" id="title" placeholder="请填写标题">
+			                </div>
+			            </div>
+			            <div class="form-group">
+			                <label for="file_upload" class="col-sm-2 control-label">缩图:</label>
+			                <div class="col-sm-8">
+								<input id="file_upload" multiple="true" type="file">
+			                    <img style="display: none" id="upload_org_code_img" class="uploadedImage" height="150">
+			                    <input id="file_upload_image" name="thumb" type="hidden" multiple="true" value="">
+			                </div>
+			            </div>
+						<div class="form-group">
+							<label for="position" class="col-sm-2 control-label">推荐位: </label>
+							<div class="col-sm-8">
+								<select name="position_id" id="position_id">
+									{foreach name="positionList" item="position"}
+										<option value="{$position.id}">{$position.name}</option>
+									{/foreach}
+								</select>
+							</div>
+						</div>
+			            <div class="form-group">
+			                <div class="col-sm-offset-2 col-sm-10">
+			                    <button type="button" class="btn btn-default" id="mooncms-button-submit">提交</button>
+			                </div>
+			            </div>
+			        </form>
+			    </div>
+
+			</div>
+			<!-- /.row -->
+			
+
+		</div>
+	</section>
+</main>
+
+
+<script type="text/javascript" src="__JS__/jquery-3.2.1.min.js"></script>
+<script type="text/javascript" src="__JS__/bootstrap.min.js"></script>
+<script type="text/javascript" src="__JS__/dialog/layer.js"></script>
+<script type="text/javascript" src="__JS__/dialog.js"></script>
+<script type="text/javascript" src="__JS__/uploadify/jquery.uploadify.js"></script>
+<script type="text/javascript" src="__JS__/admin/common.js"></script>
+<script type="text/javascript">
+	
+	var SCOPE = {
+		'save_url': '/admin/PositionContent/add',
+		'jump_url': '/admin/PositionContent/index',
+	    'ajax_upload_image_url' : '/admin/image/ajaxuploadimage',
+	    'ajax_upload_swf' : "__JS__/uploadify/uploadify.swf",
+	};
+</script>
+<script type="text/javascript" src="__JS__/admin/image.js"></script>
+<script type="text/javascript">
+	$("#news_id").change(function(event) {
+		newsId = $(this).val();
+		number = /^\d+$/;
+		if(!newsId || !number.test(newsId))
+			return;
+		url = '/admin/Content/showNews';
+		$.post(url, {id: newsId}, function(result) {
+			if(result.status == 1){
+				var title = result.data.title;
+				var thumb = result.data.thumb;
+				if(title)
+					$("#title").val(title);
+				if(thumb){
+					$("#upload_org_code_img").attr("src",thumb);
+					$("#file_upload_image").attr('value', thumb);
+					$("#upload_org_code_img").show();
+				}
+			}
+		},'JSON');
+	});
+</script>
+
+</body>
+</html>

@@ -1,0 +1,89 @@
+<?php
+
+	// 注册页面的基本信息
+	$config = think\Cache::get('basic_web_config');
+
+	// 选择所有开启的前端导航(顶部导航)以及目前所处的前台导航
+	$navs = (new app\admin\model\Menu)->getBarMenus();
+
+?>
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
+    <!-- 上述3个meta标签*必须*放在最前面，任何其他内容都*必须*跟随其后！ -->
+	<link rel="stylesheet" href="/css/bootstrap.min.css">
+	<link rel="stylesheet" href="/css/home.css">
+
+	<title><?php echo $config['title']?></title>
+	<meta name="keywords" content="<?php echo $config['keywords']?>">
+	<meta name="description" content="<?php echo $config['description']?>">
+</head>
+<body>
+
+<header>
+	<nav class="navbar navbar-inverse">
+		<div class="container">
+			<!-- Brand and toggle get grouped for better mobile display -->
+			<div class="navbar-header">
+				<button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1" aria-expanded="false">
+					<span class="sr-only">Toggle navigation</span>
+					<span class="icon-bar"></span>
+					<span class="icon-bar"></span>
+					<span class="icon-bar"></span>
+				</button>
+				<a class="topBarImage" href="/admin/Index/index"><image src="/images/tutu.png"/></a>
+				<a class="topBarImage" href="/admin/Index/index"><image src="/images/ly.png"/></a>
+			</div>
+
+			<!-- Collect the nav links, forms, and other content for toggling -->
+			<div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+				<ul class="nav navbar-nav">
+					<li class="active"><a href="/">首页 <span class="sr-only">(current)</span></a></li>
+					<?php foreach($navs as $nav){ ?>
+						<li><a href="/index/Index/index/id/<?php echo $nav['menu_id'] ?>"><?php echo $nav['name'] ?></a></li>
+					<?php } ?>
+				</ul>
+			</div><!-- /.navbar-collapse -->
+		</div><!-- /.container-fluid -->
+	</nav>
+</header>
+
+<main class="container">
+	<h3>系统发生错误</h3>
+	<p><span class="color"></span> 秒钟后跳转到首页</p>
+	<hr />
+	<p><?php echo $message; ?></p>
+</main>
+
+<footer>
+	
+</footer>
+	
+<script type="text/javascript" src="/js/jquery-3.2.1.min.js"></script>
+<script type="text/javascript" src="/js/bootstrap.min.js"></script>
+<script type="text/javascript">
+	indexUrl = '/';
+	second = 3;
+	$("main > p > .color").html(second);
+	setInterval(secUpdate, 1000);
+	function secUpdate(){
+		second --;
+		$("main > p > .color").html(second);
+		if(second <= 0){
+			window.location.href = indexUrl;
+		}
+	}
+</script>
+<style type="text/css">
+	main > *{
+		text-align: center;
+	}
+	main > p > .color{
+		color: red;
+	}
+</style>
+</body>
+</html>

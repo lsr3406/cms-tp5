@@ -1,0 +1,25 @@
+<?php
+	$menuModel = new app\admin\model\Menu;
+	$navs = $menuModel->getAdminMenus();
+	if(session('adminUser')['username'] != 'admin')
+		unset($navs[5]);
+	$index = 'index';	// 用于判断首页是否高亮
+	
+?>
+<ul class="nav nav-list nav-pills nav-stacked">
+	<!-- <li class="nav-header"><h4>List header</h4></li> -->
+	<li class="{$index|getActive}"><a href="/admin/Index/index"><i class="fa fa-dashboard"></i> 首页</a></li>
+	
+	{volist name="navs" id="nav"}
+		<li class="{$nav.c|getActive}"><a href="{$nav|getAdminMenuUrl}"><i class="fa fa-bar-chart"></i> {$nav.name}</a></li>
+	{/volist}
+</ul>
+	
+<!-- 	<li><a href="javascript:void(0)"><i class="fa fa-table"></i> 表格</a></li>
+	<li><a href="javascript:void(0)"><i class="fa fa-check-square-o"></i> 格式</a></li>
+	<li><a href="javascript:void(0)"><i class="fa fa-gift"></i> 元素</a></li>
+	<li><a href="javascript:void(0)"><i class="fa fa-th"></i> 网格</a></li>
+	<li><a href="javascript:void(0)"><i class="fa fa-dropbox"></i> 下拉菜单</a></li>
+	<li><a href="javascript:void(0)"><i class="fa fa-file-o"></i> 空白页</a></li>
+	<li><a href="javascript:void(0)"><i class="fa fa-dashboard"></i> RTL 面板</a></li>
+ -->	

@@ -1,0 +1,22 @@
+<div class="newsList">
+	{foreach name="$listNews" item="news" limit="$listCount"}
+	<div class="newsItem row">
+		<div class="newsImage col-sm-3 col-xs-4">
+			<div class="row">
+				<a target="_blank" href="/index/Detail/index/id/{$news.news_id}"><img src="{$news.thumb}" alt="{$news.title}"></a>
+			</div>
+		</div>
+		<div class="newsBody col-sm-9 col-xs-8">
+			<div class="row">
+				<h4><a target="_blank" href="/index/Detail/index/id/{$news.news_id}"><label>{$news.title}</label></a></h4>
+				<p class="hidden-xs"><a target="_blank" href="/index/Detail/index/id/{$news.news_id}"><small>{$news.description}</small></a></p>
+				<p class="newsTime hidden-xs">
+					<span class="pull-left"><small>{$news.keywords}</small></span>
+					<span>阅读({$news.count})</span>
+					<span>{$news.create_time}</span>
+				</p>
+			</div>
+		</div>
+	</div>
+	{/foreach}
+</div>

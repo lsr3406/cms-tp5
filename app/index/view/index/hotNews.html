@@ -1,0 +1,31 @@
+<div class="hotNews row">
+
+	<div class="topNews">
+		<h3>文章排行<br /><small>TOP ARTICLES</small></h3>
+		
+		<hr />
+		<ul class="list-unstyled">
+			{foreach name="$hotNews" item="news" limit="$hotCount"}
+			<li>
+				<span><a target="_blank" href="/index/Detail/index/id/{$news.news_id}">{$news.title}</a></span>
+			</li>
+			{/foreach}
+		</ul>
+	</div>
+
+	<hr />
+
+	<div class="ads">
+		<h3>精彩推荐<br /><small>ADVERTISEMENT</small></h3>
+		
+		<hr />
+		<ul class="list-unstyled">
+			{foreach name="$ads" item="ad"}
+			<li>
+				<a target="_blank" href="{$ad.url}"><img src="{$ad.thumb}" alt="{$ad.title}"></a>
+			</li>
+			{/foreach}
+		</ul>
+	</div>
+</div>
+

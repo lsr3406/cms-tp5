@@ -1,0 +1,104 @@
+
+/**
+ * 数据库名称: moon_cms
+ * 存储引擎: MyISAM
+ * 字符集: utf8
+ * 
+ * 后台用户表 cms_admin
+ */
+CREATE TABLE IF NOT EXISTS cms_admin (
+	admin_id MEDIUMINT UNSIGNED NOT NULL PRIMARY KEY AUTO_INCREMENT,
+	username VARCHAR(20) NOT NULL UNIQUE KEY,
+	password VARCHAR(32) NOT NULL,
+	lastloginip VARCHAR(15) DEFAULT '0',
+	lastlogintime INT UNSIGNED DEFAULT '0',
+	email VARCHAR(40),
+	realname VARCHAR(50) NOT NULL,
+	status TINYINT NOT NULL DEFAULT '1'
+);
+
+/**
+ * 菜单表 cms_menu
+ */
+CREATE TABLE IF NOT EXISTS cms_menu (
+	menu_id SMALLINT UNSIGNED NOT NULL PRIMARY KEY AUTO_INCREMENT,
+	name VARCHAR(40) NOT NULL,
+	parentid SMALLINT UNSIGNED NOT NULL DEFAULT '0', -- 带索引
+	m VARCHAR(20) NOT NULL,	-- 模型, 控制器, 方法
+	c VARCHAR(20) NOT NULL,
+	f VARCHAR(20) NOT NULL,
+	listorder SMALLINT UNSIGNED NOT NULL DEFAULT '0',
+	status TINYINT NOT NULL DEFAULT '1',
+	type TINYINT UNSIGNED NOT NULL DEFAULT '0',
+	
+	INDEX parentid (parentid),
+	INDEX listorder (listorder),
+	INDEX module (m, c, f)
+);
+
+
+/**
+ * 新闻文章主表 cms_news
+ */
+CREATE TABLE IF NOT EXISTS cms_news(
+	news_id MEDIUMINT UNSIGNED NOT NULL PRIMARY KEY AUTO_INCREMENT,
+	catid SMALLINT UNSIGNED NOT NULL DEFAULT '0',
+	title VARCHAR(80) NOT NULL,
+	small_title VARCHAR(30) NOT NULL,
+	title_font_color VARCHAR(250),
+	thumb VARCHAR(100) NOT NULL,
+	keywords VARCHAR(40) NOT NULL,
+	description VARCHAR(250) NOT NULL,
+	listorder TINYINT UNSIGNED NOT NULL DEFAULT '0',
+	status TINYINT NOT NULL DEFAULT '1',
+	copyfrom VARCHAR(250) DEFAULT NULL,
+	username VARCHAR(20) NOT NULL,
+	create_time INT UNSIGNED NOT NULL DEFAULT '0',
+	update_time INT UNSIGNED NOT NULL DEFAULT '0',
+	count INT UNSIGNED NOT NULL DEFAULT '0',
+	INDEX catid (catid),
+	INDEX listorder (listorder)
+);
+
+/**
+ * 新闻文章内容副表 cms_news_content
+ */
+CREATE TABLE IF NOT EXISTS cms_news_content(
+	id MEDIUMINT UNSIGNED NOT NULL PRIMARY KEY AUTO_INCREMENT,
+	news_id MEDIUMINT UNSIGNED NOT NULL,
+	content MEDIUMTEXT NOT NULL,
+	create_time INT UNSIGNED NOT NULL DEFAULT '0',
+	update_time INT UNSIGNED NOT NULL DEFAULT '0',
+	INDEX news_id (news_id)
+);
+
+/**
+ * 推荐位 cms_position
+ */
+CREATE TABLE IF NOT EXISTS cms_position(
+	id SMALLINT UNSIGNED NOT NULL PRIMARY KEY AUTO_INCREMENT,
+	name VARCHAR(30) NOT NULL,
+	status TINYINT NOT NULL DEFAULT '1',
+	description VARCHAR(100),
+	create_time INT UNSIGNED NOT NULL DEFAULT '0',
+	update_time INT UNSIGNED NOT NULL DEFAULT '0'
+);
+
+
+/**
+ * 推荐内容表 cms_position_content
+ */
+CREATE TABLE IF NOT EXISTS cms_position_content(
+	id SMALLINT UNSIGNED NOT NULL PRIMARY KEY AUTO_INCREMENT,
+	position_id INT UNSIGNED NOT NULL,
+	title VARCHAR(30) NOT NULL,
+	thumb VARCHAR(100) NOT NULL,
+	url VARCHAR(100),
+	news_id MEDIUMINT UNSIGNED NOT NULL,
+	listorder TINYINT UNSIGNED NOT NULL DEFAULT '0',
+	status TINYINT NOT NULL DEFAULT '1',
+	create_time INT UNSIGNED NOT NULL DEFAULT '0',
+	update_time INT UNSIGNED NOT NULL DEFAULT '0',
+	INDEX position_id (position_id)
+);
+

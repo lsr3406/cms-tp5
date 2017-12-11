@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<link rel="stylesheet" href="__CSS__/bootstrap.min.css">
+	<link rel="stylesheet" href="__CSS__/adminIndex.css">
+	<link rel="stylesheet" href="__CSS__/font-awesome.min.css">
+	<meta charset="UTF-8">
+	<title>后台管理页面</title>
+</head>
+<body>
+<header>
+	<section>
+		{include file="Index/nav"}
+	</section>
+</header>
+<main class="row">
+	<section class="col-md-2">
+		{include file="Index/sidebar"}
+	</section>
+	<section class="col-md-10 mainbody">
+		<div class="wrap">
+
+			<ul class="breadcrumb">
+				<li><a href="/admin/Menu/index"><i class="fa fa-dashboard"></i> 菜单管理</a> <span class="divider"></span></li>
+				<li class="active"><i class="fa fa-edit"></i> 修改</li>
+			</ul>
+			<div class="row">
+			    <div class="col-lg-12">
+
+			        <form class="form-horizontal" id="mooncms-form">
+			        	<input type="hidden" name='menu_id' value="{$menu.menu_id}">
+			            <div class="	form-group">
+			                <label for="inputname" class="col-sm-2 control-label">菜单名:</label>
+			                <div class="col-sm-8">
+			                    <input type="text" name="name" class="form-control" id="inputname" placeholder="请填写菜单名" value="{$menu.name}">
+			                </div>
+			            </div>
+			            <div class="form-group">
+			                <label for="inputPassword3" class="col-sm-2 control-label">菜单类型:</label>
+			                <div class="col-sm-8">
+			                    <input type="radio" name="type" id="optionsRadiosInline1" value="1" {if condition="$menu.type eq '后台菜单'"}checked{/if}> 后台菜单
+			                    <input type="radio" name="type" id="optionsRadiosInline2" value="0" {if condition="$menu.type eq '前端导航'"}checked{/if}> 前端导航
+			                </div>
+			            </div>
+			            <div class="form-group">
+			                <label for="inputPassword3" class="col-sm-2 control-label">模块名:</label>
+			                <div class="col-sm-8">
+			                    <input type="text" class="form-control" name="m" id="inputPassword3" placeholder="模块名如admin" value="{$menu.m}">
+			                </div>
+			            </div>
+			            <div class="form-group">
+			                <label for="inputPassword3" class="col-sm-2 control-label">控制器:</label>
+			                <div class="col-sm-8">
+			                    <input type="text" class="form-control" name="c" id="inputPassword3" placeholder="控制器如index" value="{$menu.c}">
+			                </div>
+			            </div>
+			            <div class="form-group">
+			                <label for="inputPassword3" class="col-sm-2 control-label">方法:</label>
+			                <div class="col-sm-8">
+			                    <input type="text" class="form-control" name="f" id="inputPassword3" placeholder="方法名如index"  value="{$menu.f}">
+			                </div>
+			            </div>
+			            <div class="form-group">
+			                <label for="inputPassword3" class="col-sm-2 control-label">状态:</label>
+			                <div class="col-sm-8">
+			                    <input type="radio" name="status" id="optionsRadiosInline1" value="1" {if condition="$menu.status eq '开启'"}checked{/if}> 开启
+			                    <input type="radio" name="status" id="optionsRadiosInline2" value="0" {if condition="$menu.status eq '关闭'"}checked{/if}> 关闭
+			                </div>
+
+			            </div>
+			            <div class="form-group">
+			                <div class="col-sm-offset-2 col-sm-10">
+			                    <button type="button" class="btn btn-default" id="mooncms-button-submit">确认修改</button>
+			                </div>
+			            </div>
+			        </form>
+
+
+			    </div>
+
+			</div>
+			<!-- /.row -->
+			
+
+		</div>
+	</section>
+</main>
+
+
+<script type="text/javascript" src="__JS__/jquery-3.2.1.min.js"></script>
+<script type="text/javascript" src="__JS__/bootstrap.min.js"></script>
+<script type="text/javascript" src="__JS__/dialog/layer.js"></script>
+<script type="text/javascript" src="__JS__/dialog.js"></script>
+<script type="text/javascript" src="__JS__/admin/common.js"></script>
+<script type="text/javascript" src="__JS__/admin/menu.js"></script>
+
+<script type="text/javascript">
+	var SCOPE = {
+		'save_url': '/admin/Menu/add',
+		'jump_url': '/admin/Menu/index'
+	}
+</script>
+
+</body>
+</html>

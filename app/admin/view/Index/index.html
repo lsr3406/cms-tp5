@@ -1,0 +1,116 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<link rel="stylesheet" href="__CSS__/bootstrap.min.css">
+	<link rel="stylesheet" href="__CSS__/adminIndex.css">
+	<link rel="stylesheet" href="__CSS__/font-awesome.min.css">
+	<meta charset="UTF-8">
+	<title>后台管理页面</title>
+</head>
+<body>
+<header>
+	<section>
+		{include file="Index/nav"}
+	</section>
+</header>
+<main class="row">
+	<section class="col-md-2">
+		{include file="Index/sidebar"}
+	</section>
+	<section class="col-md-10 mainbody">
+		<div class="wrap">
+
+			<!-- 标题 -->
+			<h2 class="mainbodyTitle">后台管理中心 <small> 管理控制台</small></h2>
+			
+			<!-- 面包屑导航 -->
+			<ul class="breadcrumb">
+				<li><a href="/admin/Index/index"><i class="fa fa-dashboard"></i> 首页</a> <span class="divider"></span></li>
+			</ul>
+			
+			<!-- 警告框 -->
+			<div class="alert alert-success alert-dismissible" role="alert">
+			  <button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+			  <strong>哈哈哈哈哈哈!</strong> 哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈.
+			</div>
+
+			<!-- 面板 -->
+
+			<div class="dashbord row">
+				<div class="col-lg-3 col-md-4 col-sm-6 col-xs-12">
+					<div class="panel panel-primary">
+					  <div class="panel-heading">
+					  	<span><i class="fa fa-users"></i></span>
+					  	<span class="pull-right">
+					  		<span class="panel-title">今日登录用户数</span>
+					  		<br />
+					  		<span class="panel-title number">{$loginUsersCount}</span>
+					  	</span>
+					  </div>
+					  <div class="panel-footer">
+					  </div>
+					</div>
+				</div>
+				<div class="col-lg-3 col-md-4 col-sm-6 col-xs-12">
+					<div class="panel panel-primary">
+					  <div class="panel-heading">
+					  	<span><i class="fa fa-newspaper-o"></i></span>
+					  	<span class="pull-right">
+					  		<span class="panel-title">文章总数</span>
+					  		<br />
+					  		<span class="panel-title number">{$newsCount}</span>
+					  	</span>
+					  </div>
+					  <div class="panel-footer">
+					  	<span><a href="/admin/Content/index">查看</a></span>
+					  	<span class="pull-right"><a href="/admin/Content/index"><i class="fa fa-hand-o-right"></i></a></span>
+					  </div>
+					</div>
+				</div>
+				<div class="col-lg-3 col-md-4 col-sm-6 col-xs-12">
+					<div class="panel panel-primary">
+					  <div class="panel-heading">
+					  	<span><i class="fa fa-line-chart"></i></span>
+					  	<span class="pull-right">
+					  		<span class="panel-title">文章最大阅读数</span>
+					  		<br />
+					  		<span class="panel-title number">{$maxCountNews.count}</span>
+					  	</span>
+					  </div>
+					  <div class="panel-footer">
+					  	<span><a href="/index/Detail/index/id/{$maxCountNews.news_id}">{$maxCountNews.title}</a></span>
+					  	<span class="pull-right"><a href="/index/Detail/index/id/{$maxCountNews.news_id}"><i class="fa fa-hand-o-right"></i></a></span>
+					  </div>
+					</div>
+				</div>
+				<div class="col-lg-3 col-md-4 col-sm-6 col-xs-12">
+					<div class="panel panel-primary">
+					  <div class="panel-heading">
+					  	<span><i class="fa fa-list-ul"></i></span>
+					  	<span class="pull-right">
+					  		<span class="panel-title">推荐位数</span>
+					  		<br />
+					  		<span class="panel-title number">{$positionCount}</span>
+					  	</span>
+					  </div>
+					  <div class="panel-footer">
+					  	<span><a href="/admin/Position/index">查看</a></span>
+					  	<span class="pull-right"><a href="/admin/Position/index"><i class="fa fa-hand-o-right"></i></a></span>
+					  </div>
+					</div>
+				</div>
+			</div>
+
+
+		</div>
+	</section>
+</main>
+
+
+<script type="text/javascript" src="__JS__/jquery-3.2.1.min.js"></script>
+<script type="text/javascript" src="__JS__/bootstrap.min.js"></script>
+<script type="text/javascript" src="__JS__/dialog/layer.js"></script>
+<script type="text/javascript" src="__JS__/dialog.js"></script>
+
+</body>
+</html>

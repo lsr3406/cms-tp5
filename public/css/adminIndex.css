@@ -1,0 +1,115 @@
+*{
+	margin: 0;
+	padding: 0;
+	font-family: "Microsoft Yahei";
+}
+body,html{
+}
+.wrap{
+	margin-top: 2vh;
+	/*margin-left: 2vw;*/
+	padding-right: 2vw;
+	
+	background: #fff;
+}
+/* 导航条 */
+.navbar-inverse{
+	height: 10%;
+	border-radius: 0;
+	border: 0;
+	margin-bottom: 0;
+	line-height: 70px;
+}
+.navbar-brand{
+	font-size: 2.2rem;
+}
+
+.psnMsg{
+	margin-left: 1vw;
+}
+
+
+/* 侧边栏 */
+.navbar-collapse{
+	background: #222;
+	/*padding-right: 0;*/
+}
+.nav{
+	/*margin-top: 1vw;*/
+	/*margin-bottom: 1vw;*/
+	background: #222;
+}
+.nav > li {
+	margin-top: 0;
+	padding-left: 1vw;
+	font-size: 1.8rem;
+}
+.nav > li > a{
+	color: #f80;
+}
+.nav > li > a:visited{
+	background: #222;
+	color: #f80;
+}
+.nav > li > a:hover{
+	background: #222;
+	color: #fff;
+}
+.nav > li.active > a{
+	background: #f80;
+	color: #fff;
+}
+.nav > li.active > a:visited{
+	background: #f80;
+}
+.nav > li.active:hover > a{
+	background: #f80;
+}
+.nav .nav-header {
+	text-indent: 1vw;
+	color: #ccc;
+}
+
+/* 首页面板 */
+main > .mainbody > .wrap > .dashbord .panel-heading i{
+	font-size: 8rem;
+}
+main > .mainbody > .wrap > .dashbord .panel-heading .pull-right{
+	text-align: right;
+}
+main > .mainbody > .wrap > .dashbord .panel-heading .number{
+	font-size: 5rem;
+}
+
+
+
+/* 面包屑导航 */
+
+
+
+/* 列表 */
+.listorderInput{
+	/*width: ;*/
+	/*height: ;*/
+}
+
+
+/* 表单下拉菜单 */
+.form-group select{
+	display: inline-block;
+	width: 200px;
+}
+
+
+
+
+
+
+
+/* common */
+.hr15{
+	height: 15px;
+}
+.inline{
+	display: inline;
+}

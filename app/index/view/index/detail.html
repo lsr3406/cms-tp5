@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
+    <!-- 上述3个meta标签*必须*放在最前面，任何其他内容都*必须*跟随其后！ -->
+	<link rel="stylesheet" href="/css/bootstrap.min.css">
+	<link rel="stylesheet" href="/css/offcanvas.css">
+	<link rel="stylesheet" href="/css/home.css">
+
+	<title>{$config.title}</title>
+	<meta name="keywords" content="{$config.keywords}">
+	<meta name="description" content="{$config.description}">
+</head>
+<body>
+
+<header>
+	{include file="common/topBar"}
+</header>
+
+<main class="container">
+
+	<div class="row row-offcanvas row-offcanvas-right">
+		<section class="mainBody col-sm-12 col-md-8">
+			<span class="toggle-btn visible-sm visible-xs" data-toggle="offcanvas">
+				<button type="button" class="btn btn-sm btn-primary">展开</button>
+			</span>
+			{include file="index/content"}
+		</section>
+
+		<section class="rightPart col-sm-8 col-sm-8 col-md-4 sidebar-offcanvas">
+			{include file="index/hotNews"}
+			<!--  include file="index/adCollection" -->
+		</section>
+	</div>
+
+</main>
+
+<footer>
+	
+</footer>
+	
+<script type="text/javascript" src="__JS__/jquery-3.2.1.min.js"></script>
+<script type="text/javascript" src="__JS__/bootstrap.min.js"></script>
+<script type="text/javascript" src="__JS__/dialog/layer.js"></script>
+<script type="text/javascript" src="__JS__/dialog.js"></script>
+<script type="text/javascript">
+	$(document).ready(function () {
+	  $('[data-toggle="offcanvas"]').click(function () {
+	    $('.row-offcanvas').toggleClass('active')
+	  });
+	  for(var index = 1; index <= {$hotCount}; index ++){		
+	  	var item = $(".hotNews > .topNews > ul > li").eq(index-1);
+	  	bgName = '__IMAGE__/num' + index + '.png';
+	  	item.css("background","url("+bgName+") no-repeat");
+	  }
+	});
+</script>
+
+</body>
+</html>

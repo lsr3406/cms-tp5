@@ -1,0 +1,132 @@
+
+.navbar-inverse{
+	font-size: 2rem;
+	border-radius: 0;
+	margin-bottom: 10px;
+	border-bottom: none;
+}
+.topBarImage{
+	margin-right: 16px;
+}
+.topBarImage > img{
+	width: 50px;
+	height: 50px;
+	border-radius: 50%;
+}
+.navbar-inverse > .container > .navbar-collapse > ul > .active{
+	border-bottom: #7777ff 3px solid;
+}
+
+
+/* 主体 */
+main{
+
+}
+
+/* 页面左侧 */
+.mainBody{
+	/*background: #def;*/
+}
+.toggle-btn{
+	position: absolute;
+	z-index: 99;
+	top: 10px;
+	right: 10px;
+}
+.imageNews .thumbnail{
+	border-radius: 2px;
+	padding: 3px 4px; 
+	margin: 0;
+}
+.smallImage{
+	padding: 0;
+}
+
+.newsList > .newsItem{
+	border-top: 1px solid #ccc;
+	margin-top: 10px;
+	padding-top: 10px;
+}
+.newsList > .newsItem > .newsImage{
+	/*padding: 0;*/
+}
+.newsList > .newsItem > .newsBody h4{
+	font-size: 1.6rem;
+}
+.newsList > .newsItem > .newsBody > .row{
+	padding-right: 10px;
+}
+.newsList > .newsItem > .newsImage img{
+	width: 100%;
+	/*height: 4%;*/
+	/*padding-bottom: 75%;*/
+	padding-left: 5px;
+	padding-right: 15px;
+}
+.newsList > .newsItem > .newsBody .newsTime {
+	text-align: right;
+}
+.newsList > .newsItem > .newsBody p > a{
+	color: #000;
+}
+.newsList > .newsItem > .newsBody p > a:hover{
+	text-decoration: none;
+}
+.newsList > .newsItem > .newsBody p > span.pull-right{
+	margin-left:20px;
+}
+
+
+/* 页面右侧 */
+.rightPart{
+	padding-left: 25px;
+	/*background: #fed;*/
+}
+
+.topNews > h3, .ads > h3{
+	text-align: center;
+}
+.topNews > ul, .ads > ul{
+	/*padding-left: 10px;*/
+	width: 80%;
+	margin: 0 auto;
+}
+.topNews > ul > li{
+	margin-top: 5px;
+}
+.topNews > ul > li > span{
+	display: block;
+	margin-left: 30px;
+}
+.topNews > ul > li > span > a{
+	font-size: 1.6rem;
+	color: #000;
+}
+
+.ads > ul > li{
+	margin: 10px auto;
+}
+.ads > ul > li > a, .ads > ul > li > a > img{
+	width: 100%;
+}
+
+
+/* 文章内容 */
+.content > p {
+	color: gray;
+}
+.content > p > .smallTilte {
+	margin-right: 20px;
+}
+.content > p > .createTime, .content > p > .copyfrom {
+	float: right;
+	margin-left: 20px;
+}
+.content > .newsContent{
+	width: 90%
+}
+
+/* common */
+.absolute{
+	display: absolute;
+}

@@ -1,0 +1,113 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<link rel="stylesheet" href="__CSS__/bootstrap.min.css">
+	<link rel="stylesheet" href="__CSS__/adminIndex.css">
+	<link rel="stylesheet" href="__CSS__/font-awesome.min.css">
+	<meta charset="UTF-8">
+	<title>后台管理页面</title>
+</head>
+<body>
+<header>
+	<section>
+		{include file="Index/nav"}
+	</section>
+</header>
+<main class="row">
+	<section class="col-md-2">
+		{include file="Index/sidebar"}
+	</section>
+	<section class="col-md-10 mainbody">
+		<div class="wrap">
+
+			<!-- 面包屑导航 -->
+			<ul class="breadcrumb">
+				<li><a href="/admin/Menu/index"><i class="fa fa-dashboard"></i> 菜单管理</a> <span class="divider"></span></li>
+			</ul>
+	
+			<!-- 按钮 -->
+			<button id="button-add" class="btn btn-primary"><i class="fa fa-add"></i>添加</button>
+			<button  id="button-listorder" type="button" class="btn btn-default dropdown-toggle" ><span class="glyphicon glyphicon-plus" aria-hidden="true"></span>更新排序 </button>
+			<div class="btn-group dropdown" >
+				<button id="typeBtn" type="button" class="btn btn-default dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+					请选择菜单类型: {$type} <span class="caret"></span>
+				</button>
+				<ul id="menuType" class="dropdown-menu" name="menuType">
+					<li value="2"><a href="javascript:void(0)">所有</a></li>
+					<li value="0"><a href="javascript:void(0)">前端导航</a></li>
+					<li value="1"><a href="javascript:void(0)">后台菜单</a></li>
+				</ul>
+			</div>
+
+			<!-- 表格 -->
+			<div class="row">
+			    <div class="col-md-12">
+			        <h3></h3>
+			        <div class="table-responsive">
+			            <form id="mooncms-listorder">
+			            <table class="table table-striped table-hover table-condensed mooncms-table">
+			                <thead>
+			                <tr>
+			                    <th width="4">排序</th>
+			                    <th>id</th>
+			                    <th>菜单名</th>
+			                    <th>模块名</th>
+			                    <th>类型</th>
+			                    <th>状态</th>
+			                    <th>操作</th>
+			                </tr>
+			                </thead>
+			                <tbody>
+			                	{volist name="menus" id="menu"}
+			                    <tr>
+			                        <td><input id="listorderInput" size="3" type="text" name="{$menu.menu_id}" value="{$menu.listorder}"/></td>
+			                        <td>{$menu.menu_id}</td>
+			                        <td>{$menu.name}</td>
+			                        <td>{$menu.m}</td>
+			                        <td>{$menu.type}</td>
+			                        <td>{$menu.status}</td>
+			                        <td>
+			                        	<a href="javascript:void(0)" attr-id="{$menu.menu_id}" id="mooncms-edit"  attr-a="menu" attr-message="修改">
+			                        		<i class="fa fa-edit"></i>
+			                        	</a>
+			                        	<a href="javascript:void(0)" attr-id="{$menu.menu_id}" attr-status="-1" id="mooncms-delete"  attr-a="menu" attr-message="删除">
+			                        		<i class="fa fa-trash"></i>
+			                        	</a>
+			                        </td>
+			                    </tr>
+			                	{/volist}
+			                </tbody>
+			            </table>
+			            </form>
+						<div>{$menus->render()}</div>
+			        </div>
+			    </div>
+
+			</div>
+			<!-- /.row -->
+
+		</div>
+	</section>
+</main>
+
+
+<script type="text/javascript" src="__JS__/jquery-3.2.1.min.js"></script>
+<script type="text/javascript" src="__JS__/bootstrap.min.js"></script>
+<script type="text/javascript" src="__JS__/dialog/layer.js"></script>
+<script type="text/javascript" src="__JS__/dialog.js"></script>
+<script>
+    var SCOPE = {
+        'index_url' : '/admin/Menu/index',
+        'add_url' : '/admin/Menu/add',
+        'edit_url' : '/admin/Menu/edit',
+        'set_status_url' : '/admin/Menu/setStatus',
+        'listorder_url' : '/admin/Menu/listorder',
+    }
+
+
+</script>
+<script type="text/javascript" src="__JS__/admin/common.js"></script>
+<script type="text/javascript" src="__JS__/admin/menu.js"></script>
+</body>
+</html>
