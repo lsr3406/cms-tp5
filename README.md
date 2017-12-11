@@ -1,2 +1,2 @@
 # mooncms
-我的第一个新闻网站
+My first cms website
